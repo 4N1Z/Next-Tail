@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Next/Tailwind LLM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,101 +23,149 @@
 
     <!-- Component Start -->
     <div class="flex flex-col flex-grow w-full max-w-xl bg-white rounded-lg overflow-hidden">
-        <div class="flex flex-col flex-grow h-0 p-4 overflow-auto">
-            <div class="flex w-full mt-2 space-x-3 max-w-xs">
+        <div class=" flex flex-col flex-grow h-0 p-4 overflow-auto" id="chats">
+            <!-- Chat messages will be displayed here -->
+            <!-- <div class="flex w-full mt-2 space-x-3 max-w-xs">
                 <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
                 <div>
                     <div class="bg-gray-300 p-3 rounded-r-lg rounded-bl-lg">
-                        <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="text-sm" id="${idCount}"></p>
                     </div>
                     <span class="text-xs text-gray-500 leading-none">2 min ago</span>
                 </div>
-            </div>
-            <div class="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
-                <div>
-                    <div class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
-                        <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                    </div>
-                    <span class="text-xs text-gray-500 leading-none">2 min ago</span>
-                </div>
-                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
-            </div>
-            <div class="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
-                <div>
-                    <div class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
-                        <p class="text-sm">Lorem ipsum dolor sit amet.</p>
-                    </div>
-                    <span class="text-xs text-gray-500 leading-none">2 min ago</span>
-                </div>
-                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
-            </div>
-            <div class="flex w-full mt-2 space-x-3 max-w-xs">
-                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
-                <div>
-                    <div class="bg-gray-300 p-3 rounded-r-lg rounded-bl-lg">
-                        <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. </p>
-                    </div>
-                    <span class="text-xs text-gray-500 leading-none">2 min ago</span>
-                </div>
-            </div>
-            <div class="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
-                <div>
-                    <div class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
-                        <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. </p>
-                    </div>
-                    <span class="text-xs text-gray-500 leading-none">2 min ago</span>
-                </div>
-                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
-            </div>
-            <div class="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
-                <div>
-                    <div class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
-                        <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt.</p>
-                    </div>
-                    <span class="text-xs text-gray-500 leading-none">2 min ago</span>
-                </div>
-                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
-            </div>
-            <div class="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
-                <div>
-                    <div class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
-                        <p class="text-sm">Lorem ipsum dolor sit amet.</p>
-                    </div>
-                    <span class="text-xs text-gray-500 leading-none">2 min ago</span>
-                </div>
-                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
-            </div>
-            <div class="flex w-full mt-2 space-x-3 max-w-xs">
-                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
-                <div>
-                    <div class="bg-gray-300 p-3 rounded-r-lg rounded-bl-lg">
-                        <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. </p>
-                    </div>
-                    <span class="text-xs text-gray-500 leading-none">2 min ago</span>
-                </div>
-            </div>
-            <div class="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
-                <div>
-                    <div class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
-                        <p class="text-sm">Lorem ipsum dolor sit.</p>
-                    </div>
-                    <span class="text-xs text-gray-500 leading-none">2 min ago</span>
-                </div>
-                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
-            </div>
+            </div> -->
         </div>
 
         <div class="bg-gray-300 p-4">
-            <input class="flex items-center h-10 w-full rounded px-3 text-sm" type="text"
+            <input class="flex items-center h-10 w-full rounded px-3 text-sm" id="user_input" type="text"
                 placeholder="Type your message…">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="send_message"><svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+            </svg></button>
         </div>
     </div>
-    <!-- Component End  -->
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+  <script>
+    let controller; // AbortController to stop the streaming
+    const chatOutput = $("#chats");
+    const userInput = $("#user_input");
+    var idCount = 0;
 
+    async function startStreaming(url, onDataReceived, onError, onComplete) {
+    controller = new AbortController(); // Create a new AbortController for each streaming session
+    const receivedMessage = `<div class="flex w-full mt-2 space-x-3 max-w-xs">
+        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
+        <div>
+            <div class="bg-gray-300 p-3 rounded-r-lg rounded-bl-lg">
+                <p class="text-sm" id="${idCount}"></p>
+            </div>
+        </div>
+    </div>`;
+      chatOutput.append(receivedMessage);
+      idCount++;
+      console.log(idCount);
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ message: userInput.val() }),
+          signal: controller.signal, // Attach the AbortSignal to the fetch request
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const reader = response.body.getReader();
+
+        while (true) {
+          const { done, value } = await reader.read();
+
+          if (done) {
+            // The stream has ended
+            onComplete();
+            break;
+          }
+
+          // Process the data chunk
+          onDataReceived(value);
+        }
+      } catch (error) {
+        onError(error);
+      }
+    }
+
+    function startStream(url, onDataReceived, onError, onComplete) {
+      //controller = new AbortController(); // Create a new AbortController for each streaming session
+      startStreaming(url, onDataReceived, onError, onComplete);
+    }
+
+    function stopStreaming() {
+      if (controller) {
+        controller.abort(); // Abort the fetch request and stop the streaming
+        controller = null;
+      }
+    }
+
+    function onDataReceived(dataChunk) {
+      // Process each data chunk as it arrives
+      const text = new TextDecoder().decode(dataChunk);
+      const letters = text.split('');
+      const ids = idCount-1;
+      const chat = $(`#${ids}`);
+      letters.forEach(letter => {
+        chat.append(`<span class="letter">${letter}</span>`);
+        chatOutput.scrollTop(chatOutput.prop("scrollHeight"));
+      });
+    }
+
+    function onError(error) {
+      // Handle streaming error
+      console.error("Error while streaming:", error);
+    }
+
+    function onComplete() {
+      // Stream completed
+      console.log("Streaming completed.");
+    }
+
+    $("#send_message").on("click", function () {
+      const userMessage = userInput.val();
+      if (userMessage.trim() !== "") {
+        chatOutput.append(`<div class="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
+            <div>
+                <div class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
+                    <p class="text-sm">${userMessage} </p>
+                </div>
+            </div>
+            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"></div>
+        </div>`)
+        // Send user's message as a POST request
+        startStreaming(
+            '{%url "generate_stream"%}',
+            onDataReceived,
+            onError,
+            onComplete
+            );
+            
+        userInput.val(""); // Clear the input field
+            // Display the user's message in the chat
+      }
+    });
+
+    // Simulate starting the streaming when the page loads
+    //startStream(
+    // '{%url "generate_stream"%}',
+    //  onDataReceived,
+    //  onError,
+    //  onComplete
+    //);
+  </script>
 </body>
 
 </html>
