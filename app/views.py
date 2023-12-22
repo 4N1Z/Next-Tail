@@ -1,8 +1,8 @@
 from django.shortcuts import render
 import time
 from rest_framework.views import APIView
-from rest_framework.renderers import JSONRenderer
-from rest_framework.response import Response
+# from rest_framework.renderers import JSONRenderer
+# from rest_framework.response import Response
 from django.views.generic import View  
 from django.shortcuts import render
 from django.http import StreamingHttpResponse
@@ -11,7 +11,6 @@ from openai import OpenAI  # for OpenAI API calls
 import time  # for measuring time duration of API calls
 
 client = OpenAI(
-    # This is the default and can be omitted
     api_key='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',
 )
 
@@ -37,19 +36,9 @@ class StreamGeneratorView(APIView):
         print("here")
         for chunk in stream:
             yield chunk.choices[0].delta.content or ""
-
-    # def get(self,request): 
-    #     fake = Faker()
-    #     name = self.name_generator(fake)
-    #     response =  StreamingHttpResponse(name,status=200, content_type='text/event-stream')
-    #     response['Cache-Control']= 'no-cache'
-    #     return response
     
     def post(self,request):
         print(request.data)
-        # fake = Faker()
-        # name = self.name_generator(fake,request.data['message'])
-        # response =  StreamingHttpResponse(name,status=200, content_type='text/event-stream')
         if request.data['message'] == '':
             chat = self.openaichatter('Send a greetings message for me and ask me to ask you a question to continue a conversation')
         else:
