@@ -25,7 +25,7 @@ from llama_index.llms import Gemini
 
 model = genai.GenerativeModel('models/gemini-pro-vision')
 res = model.generate_content([
-    'Can you give a prompt to generate this image using diffusion ? IMAGE : ', PIL.Image.open('ssw.png')])
+    'Can you give the tailwind code for this ? IMAGE : ', PIL.Image.open('ssw.png')])
 
 # for r in res :
 #     print(r)
@@ -78,4 +78,17 @@ print(res.text)
 #   return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
 
 
+# retriever = vectorstore.as_retriever()
 
+# prompt = hub.pull("rlm/rag-prompt")
+# llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+
+# def format_docs(docs):
+#     return "\n\n".join(doc.page_content for doc in docs)
+
+# rag_chain = (
+#     {"context": retriever | format_docs, "question": RunnablePassthrough()}
+#     | prompt
+#     | llm
+#     | StrOutputParser()
+# )

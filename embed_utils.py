@@ -70,23 +70,17 @@ def get_cleaned_file_names(documents):
 def formatToEmbed(document):
     """To convert the extracted documents into format that can be embedded."""
 
-    page_contents = [doc.page_content for doc in document]
-    # print(page_contents)
-    return page_contents
-
-    # toEmbed = []
-    # for doc in document:
-    #     # print(doc.text)
-    #     docToString = '"""' + doc.text + '"""'
-    #     # toEmbed.append(doc.text)
-    #     toEmbed.append(docToString)
-    # return docToString
+    toEmbed = []
+    for doc in document:
+        # print(doc.text)
+        docToString = '"""' + doc.text + '"""'
+        # toEmbed.append(doc.text)
+        toEmbed.append(docToString)
+    return docToString
 
 
 def embedDocuments(documents):
     """Using cohere embedding to embed documents and using formatToEmbed to convert the data into list of string"""
-
-    documents = formatToEmbed(documents)
 
     response = co.embed(
         texts=documents,
@@ -99,32 +93,74 @@ def embedDocuments(documents):
     return response.embeddings
 
 
+# def loadFile(required_ext):
+#     """To extract the documents from the file"""
+
+#     # required_exts = [required_ext]
+
+#     # reader = SimpleDirectoryReader(
+#     #     input_files=["./accentColor.mdx"],
+#     #     # input_dir="./tailwindcss/src/pages/docs",
+#     #     file_extractor={"mdx": MarkdownReader},
+#     #     # required_exts=required_exts,
+#     #     recursive=True
+#     # )
+#     # return reader.load_data()
+#     docs = []
+    
+#     directory_path = ".\\tailwind"
+# # Loop through each file in the directory
+#     docs = []
+
+# # Recursively walk through the directory and its subdirectories
+#     for root, dirs, files in os.walk(directory_path):
+#         for filename in files:
+#             if filename.endswith(required_ext):
+#                 file_path = os.path.join(root, filename)
+#                 loader = TextLoader(file_path, encoding='UTF-8')
+#                 document = loader.load()[0]  # Load the first document
+
+#                 # Calculate metadata length
+#                 metadata_length = sum(len(str(value)) for value in document.metadata.values())
+
+#                 # Determine maximum characters allowed for page_content
+#                 max_page_content_length = 16000 - metadata_length
+
+#                 # Truncate page_content if necessary
+#                 if len(document.page_content) > max_page_content_length:
+#                     document.page_content = document.page_content[:max_page_content_length]
+
+#                 docs.append(document)
+
+        
+
+#     return docs
+
 def loadFile(required_ext):
     """To extract the documents from the file"""
 
-    # required_exts = [required_ext]
-
-    # reader = SimpleDirectoryReader(
-    #     input_files=["./accentColor.mdx"],
-    #     # input_dir="./tailwindcss/src/pages/docs",
-    #     file_extractor={"mdx": MarkdownReader},
-    #     # required_exts=required_exts,
-    #     recursive=True
-    # )
-    # return reader.load_data()
     docs = []
-    directory_path = "./"
-# Loop through each file in the directory
-    for filename in os.listdir(directory_path):
-        if filename.endswith(required_ext):
-            file_path = os.path.join(directory_path, filename)
-            
-            # Assuming your TextLoader class takes a file path as an argument
-            loader = TextLoader(file_path)
-            
-            # Load the document and append it to the docs list
-            document = loader.load()
-            docs.append(document[0])
+    directory_path = ".\\next"
+
+    for root, dirs, files in os.walk(directory_path):
+        for filename in files:
+            if filename.endswith(required_ext):
+                file_path = os.path.join(root, filename)
+                loader = TextLoader(file_path, encoding='UTF-8')
+                document = loader.load()[0]  # Load the first document
+
+                # Calculate metadata length in bytes
+                metadata_length = sum(len(str(value)) for value in document.metadata.values())
+
+                # Determine maximum bytes allowed for page_content (with a buffer)
+                max_page_content_length = min(16000 - metadata_length, 5000)  # 5.000 KiB limit with buffer
+                # max_page_content_length = 16000 - metadata_length  # 5.000 KiB limit with buffer
+
+                # Truncate page_content if necessary (in bytes)
+                if len(document.page_content) > max_page_content_length:
+                    document.page_content = document.page_content[:max_page_content_length]
+
+                docs.append(document)
 
     return docs
 
@@ -172,12 +208,12 @@ def main():
     # print(document)
     
     docs = loadFile(".mdx")
-    print(docs)
+    print(len(docs))
     # print(docs)
-    vectorEmbeddings = embedDocuments(docs)
+    # vectorEmbeddings = embedDocuments(document)
     # json_str = json.dumps(obj.to_json())
     # embedIntoAstra(json.dumps(document.to_json()))
-    # embedIntoAstra(docs,"")
+    embedIntoAstra(docs,"")
     # print(document)
     # embedIntoAstra(document,vectorEmbeddings)
 
