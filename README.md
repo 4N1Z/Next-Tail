@@ -1,6 +1,7 @@
 # NextTail AI - AI Front End Developer Suite
 
 NextTail AI is a comprehensive AI Front End Developer Suite designed to address the challenges associated with converting CSS to Tailwind CSS. Our solution incorporates cutting-edge technologies to automate the conversion process, enhance user interface (UI) development, and provide extensive documentation support.
+![image](https://github.com/4N1Z/Next-Tail/assets/91843271/834bb765-764d-45ea-a891-42a2fff34430)
 
 ## Features
 
@@ -21,7 +22,10 @@ To enhance overall functionality, **Langchain** and **Llama Index** plays an int
 
 Evaluation metrics are crucial for performance analysis, and NextTail AI utilizes  **TruLens** for evaluation of the Mulitmodal. This combination, chained using Llama Index, ensures thorough evaluation of the multimodal capabilities.
 
+<img src="https://github.com/4N1Z/Next-Tail/assets/91843271/69e5f55d-f54e-4e85-b074-21d90b30cb2e" alt="image" width="400" height="200">
+
 For storage needs, NextTail AI leverages Amazon S3 bucket, ensuring secure and efficient data storage.
+
 
 
 
